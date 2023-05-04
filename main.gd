@@ -4,10 +4,10 @@ var player_window_scene = preload("res://Players.tscn")
 var player_window
 var tree: AssetNode = null
 
-@onready var search_bar = $MarginContainer/HBoxContainer/VBoxContainer2/Searchbar
+@onready var search_bar = $MarginContainer/VBoxContainer/HBoxContainer2/Searchbar
 @onready var directory_dialog = $FileDialog
-@onready var tree_widget = $MarginContainer/HBoxContainer/VBoxContainer2/TreeView
-@onready var preview = $MarginContainer/HBoxContainer/VBoxContainer/TextureRect
+@onready var tree_widget = $MarginContainer/VBoxContainer/HBoxContainer/TreeView
+@onready var preview_widget = $MarginContainer/VBoxContainer/HBoxContainer/ImagePreview
 
 func _ready():
 	spawn_players_window()
@@ -23,7 +23,7 @@ func spawn_players_window():
 func show_image(path: String):
 	var image = Image.load_from_file(path)
 	var texture = ImageTexture.create_from_image(image)
-	preview.texture = texture
+	preview_widget.show_image(texture, path.get_file())
 	player_window.image.texture = texture
 
 

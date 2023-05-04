@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhe3dn7chs1sk"]
+
+[ext_resource type="Script" path="res://scenes/ImagePreview/ImagePreview.gd" id="1_j0toc"]
+
+[node name="ImagePreview" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_j0toc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+horizontal_alignment = 1
+text_overrun_behavior = 3

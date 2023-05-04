@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://4gwobhhnk0gt"]
+[gd_scene load_steps=5 format=3 uid="uid://4gwobhhnk0gt"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_r2r8p"]
-[ext_resource type="PackedScene" path="res://scenes/SearchBar/Searchbar.tscn" id="2_k73jh"]
+[ext_resource type="PackedScene" uid="uid://d028lyb2oo21u" path="res://scenes/SearchBar/Searchbar.tscn" id="2_k73jh"]
 [ext_resource type="PackedScene" uid="uid://cafkijt5lnmy7" path="res://scenes/TreeView/TreeView.tscn" id="3_a7dv6"]
+[ext_resource type="PackedScene" uid="uid://dhe3dn7chs1sk" path="res://scenes/ImagePreview/ImagePreview.tscn" id="4_qsxuy"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -34,36 +35,32 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HSplitContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Searchbar" parent="MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_k73jh")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Searchbar" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_k73jh")]
-layout_mode = 2
-
-[node name="TreeView" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("3_a7dv6")]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Seleziona una cartella"
 
+[node name="HBoxContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TreeView" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_a7dv6")]
+layout_mode = 2
+size_flags_stretch_ratio = 4.0
+
+[node name="ImagePreview" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_qsxuy")]
+layout_mode = 2
+
 [connection signal="dir_selected" from="FileDialog" to="." method="_on_select_directory"]
-[connection signal="filter" from="MarginContainer/HBoxContainer/VBoxContainer2/Searchbar" to="." method="_on_filter"]
-[connection signal="file_selected" from="MarginContainer/HBoxContainer/VBoxContainer2/TreeView" to="." method="show_image"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="filter" from="MarginContainer/VBoxContainer/HBoxContainer2/Searchbar" to="." method="_on_filter"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="file_selected" from="MarginContainer/VBoxContainer/HBoxContainer/TreeView" to="." method="show_image"]
