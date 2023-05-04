@@ -38,8 +38,11 @@ func _on_select_directory(dir):
 
 
 func _on_filter(value):
+	if tree == null:
+		return
 	file_tree.clear()
-	draw_tree(null, tree.get_subtree(value))
+	var subtree = tree.get_subtree(value)
+	draw_tree(null, subtree)
 
 
 func draw_tree(file_subtree, subtree: AssetNode):
