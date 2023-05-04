@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://cafkijt5lnmy7"]
+
+[ext_resource type="Script" path="res://scenes/TreeView/TreeView.gd" id="1_co11w"]
+
+[node name="TreeView" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_co11w")
+
+[node name="Tree" type="Tree" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Results" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="ResultsLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "file"
+
+[connection signal="item_selected" from="Tree" to="." method="_on_selected"]

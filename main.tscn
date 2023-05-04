@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqxbi5uxa0qbf"]
+[gd_scene load_steps=4 format=3 uid="uid://4gwobhhnk0gt"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_r2r8p"]
-[ext_resource type="PackedScene" uid="uid://2rrgy44vqmcw" path="res://SearchBar/Searchbar.tscn" id="2_k73jh"]
+[ext_resource type="PackedScene" path="res://scenes/SearchBar/Searchbar.tscn" id="2_k73jh"]
+[ext_resource type="PackedScene" uid="uid://cafkijt5lnmy7" path="res://scenes/TreeView/TreeView.tscn" id="3_a7dv6"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -43,10 +44,8 @@ size_flags_horizontal = 3
 [node name="Searchbar" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_k73jh")]
 layout_mode = 2
 
-[node name="Tree" type="Tree" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="TreeView" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("3_a7dv6")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -66,5 +65,5 @@ text = "Seleziona una cartella"
 
 [connection signal="dir_selected" from="FileDialog" to="." method="_on_select_directory"]
 [connection signal="filter" from="MarginContainer/HBoxContainer/VBoxContainer2/Searchbar" to="." method="_on_filter"]
-[connection signal="item_selected" from="MarginContainer/HBoxContainer/VBoxContainer2/Tree" to="." method="_on_file_selected"]
+[connection signal="file_selected" from="MarginContainer/HBoxContainer/VBoxContainer2/TreeView" to="." method="show_image"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

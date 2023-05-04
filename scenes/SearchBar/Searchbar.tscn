@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://2rrgy44vqmcw"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://SearchBar/Searchbar.gd" id="1_0t55r"]
+[ext_resource type="Script" path="res://scenes/SearchBar/Searchbar.gd" id="1_0t55r"]
 
 [node name="SearchBar" type="HBoxContainer"]
 anchors_preset = 10
