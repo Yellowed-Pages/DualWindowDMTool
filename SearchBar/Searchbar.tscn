@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://2rrgy44vqmcw"]
+
+[ext_resource type="Script" path="res://SearchBar/Searchbar.gd" id="1_0t55r"]
+
+[node name="SearchBar" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+script = ExtResource("1_0t55r")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Filtra:"
+vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+placeholder_text = "filtra per nome..."
+scroll_fit_content_height = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "azzera"
+
+[node name="Searchbar" type="Control" parent="."]
+layout_mode = 2
+
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_reset"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4rawg8y3qf8x"]
+
+[ext_resource type="Texture2D" uid="uid://g8elctoa8ya7" path="res://assets/images/dungeons-and-dragon-logo.jpg" id="1_o4yow"]
+[ext_resource type="Script" path="res://Players.gd" id="1_qcyen"]
+
+[node name="Players" type="Window"]
+initial_position = 2
+title = "Schermo dei Giocatori"
+size = Vector2i(800, 450)
+script = ExtResource("1_qcyen")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_o4yow")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
